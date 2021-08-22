@@ -20,11 +20,11 @@
 ; Initialised variables
 section .data
 	one:			db	"How are we feeling today?", newline
-	one_l:			equ $-one										; Length of string one
+	one_l:			equ	$-one										; Length of string one
 	two:			db	"You are feeling "							; Follow two by printing response
-	two_l:			equ $-two
+	two_l:			equ	$-two
 	three:			db	"This is concerning.", newline
-	three_l:		equ $-three
+	three_l:		equ	$-three
 	four:			db	"I would like to perform some diagnostic tests.", newline
 	four_l:			equ	$-four
 	five:			db	"I will ask you a series of questions.", newline
@@ -38,13 +38,13 @@ section .data
 	nine:			db	"What is the name of the street you lived on as a child?", newline
 	nine_l:			equ	$-nine
 	ten:			db	"Ok, I can now tell you that your adult film name is " ; Follow ten by printing pet_name+street_name.
-	ten_l:			equ $-ten
+	ten_l:			equ	$-ten
 	eleven:			db	"With that out of the way, we can begin the diagnostic test.", newline
 	eleven_l:		equ	$-eleven
 	twelve:			db	"Ever since we streamlined the clinical definition of insanity, testing for it has become trivial.", newline
 	twelve_l:		equ	$-twelve
 	thirteen:		db	"The test consists of a single question. Are you ready?", newline
-	thirteen_l:		equ $-thirteen
+	thirteen_l:		equ	$-thirteen
 	fourteen:		db	"Do you ever do the same thing over and over again expecting a different result?", newline
 	fourteen_l:		equ	$-fourteen
 	; (Repeat until they answer yes)
@@ -55,7 +55,7 @@ section .data
 	seventeen:		db	"But don't fret.", newline
 	seventeen_l:	equ	$-seventeen
 	eighteen:		db	"We're all mad here.", newline
-	eighteen_l:		equ $-eighteen
+	eighteen_l:		equ	$-eighteen
 
 	; Comparison value
 	yes:			db	"yes", newline
@@ -79,7 +79,6 @@ _response:
 	mov rcx, response
 	mov rdx, buffer_len
 	int kernel_call
-	;mov rsi, rax						; Move the number of characters user enters from rax to rsi
 	ret
 
 ; Ask diagnostic question
@@ -303,3 +302,4 @@ _start:
 	mov rax, sys_exit
 	mov rbx, success				; Error code 0
 	int kernel_call
+
